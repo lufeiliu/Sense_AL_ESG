@@ -1,0 +1,4 @@
+Je scrape la requete google news
+J'extrait de chaque article le texte
+Je les classe du plus au moins intéressant
+Jsp ce que j'en fais
