@@ -6,7 +6,7 @@ from download_articles_from_search import find_list_articles, test, extract_one_
 
 ss = st.session_state
 
-st.set_page_config(page_title="Sense AL", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="Sense AL", page_icon="🍜", layout="wide")
 
 tabs = ["Monitoring","Search tab", "Results"]
 st.sidebar.subheader("Navigation")
