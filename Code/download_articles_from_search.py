@@ -5,12 +5,13 @@ import base64
 import newspaper
 
 class clarticle:
-    def __init__(self,title,url,date,author,text):
+    def __init__(self,title,url,date,author,text,ESGscore):
         self.title = title
         self.url = url
         self.date = date
         self.author = author
         self.text = text
+        self.ESGscore = ESGscore
 
 def format_date(date):
     return(date)
@@ -151,10 +152,8 @@ def extract_one_article_from_parser(parser, k):
         else:
             title = 'No title'
         
-        return(clarticle(title,url,date,author,[]))
+        return(clarticle(title,url,date,author,[],0))
     return(False)
 
 
-def test():
-    return("yes")
     

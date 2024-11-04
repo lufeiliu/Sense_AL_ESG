@@ -1,6 +1,6 @@
 import streamlit as st
 import time
-from download_articles_from_search import find_list_articles, test, extract_one_article_from_parser
+from download_articles_from_search import find_list_articles, extract_one_article_from_parser
 
 # from ../Backend/download_article_from_search import test
 
@@ -68,4 +68,4 @@ if selected_tab == tabs[1]:
 
 
 if selected_tab == tabs[2]:
-    st.text(test())
+    st.text("iuzefouh")
