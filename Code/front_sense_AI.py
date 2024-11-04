@@ -1,6 +1,6 @@
 import streamlit as st
 import time
-from download_articles_from_search import find_list_articles, test
+from download_articles_from_search import find_list_articles, test, extract_one_article_from_parser
 
 # from ../Backend/download_article_from_search import test
 
@@ -37,6 +37,7 @@ if selected_tab == tabs[1]:
     a = c2.button("Lancer la recherche")
 
     if a:
+        st.text(ss['esg_company'])
         placeholder = st.empty()
         placeholder.markdown('Fonction recherche lancée')
 
@@ -50,7 +51,19 @@ if selected_tab == tabs[1]:
         placeholder.markdown(f"{nb_articles} articles trouvés !")
 
         placeholder2 = st.empty()
-        placeholder2 = st.markdown('Analyse des articles en cours...')
+        placeholder2.markdown('Analyse des articles en cours...')
+        placeholder3 = st.empty()
+        placeholder4 = st.empty()
+        L = []
+        print(len(parser))
+        for k in range(nb_articles):
+            placeholder3.progress(k/nb_articles)
+            extracted_article = extract_one_article_from_parser(parser,k)
+            if extracted_article:
+                L.append(extracted_article)
+            placeholder4.markdown(f"{k} articles sur {nb_articles} extraits")
+        placeholder3.progress(100)
+        placeholder2.markdown('Analyse terminée')
         
 
 
