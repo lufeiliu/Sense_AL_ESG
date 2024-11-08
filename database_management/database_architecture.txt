@@ -1,0 +1,7 @@
+A quoi ressemble la database_ratings.db, colonne par colonne :
+
+ID : int, ID
+Company_name : string, nom de l'entreprise
+Date_of_rating : string, date à laquelle l'analyse a été effectué
+Score_ESG : float, score ESG donné à cette date
+Nb_articles : int, nombre d'articles utilisés pour donner la note

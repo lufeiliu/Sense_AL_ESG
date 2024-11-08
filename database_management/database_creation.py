@@ -5,7 +5,7 @@ def create_connection(db_file):
     conn = None
     try:
         conn = sqlite3.connect(db_file)
-        print(sqlite3.version)
+        # print(sqlite3.version)
     except sqlite3.Error as e:
         print(e)
     return conn
@@ -19,13 +19,14 @@ def create_table(conn, create_table_sql):
         print(e)
 
 def main():
-    database = "pythonsqlite.db"
+    database = "database_ratings.db"
 
-    sql_create_projects_table = """CREATE TABLE IF NOT EXISTS projects (
-                                        id integer PRIMARY KEY,
-                                        name text NOT NULL,
-                                        begin_date text,
-                                        end_date text
+    sql_create_ratings_table = """CREATE TABLE IF NOT EXISTS ESG_ratings(
+                                        ID integer PRIMARY KEY,
+                                        Company_name text NOT NULL,
+                                        Date_of_rating text,
+                                        Score_ESG float,
+                                        Nb_articles integer
                                     );"""
 
     # create a database connection
@@ -34,7 +35,7 @@ def main():
     # create tables
     if conn is not None:
         # create projects table
-        create_table(conn, sql_create_projects_table)
+        create_table(conn, sql_create_ratings_table)
     else:
         print("Error! cannot create the database connection.")
 
