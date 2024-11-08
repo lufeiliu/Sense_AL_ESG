@@ -48,21 +48,26 @@ if selected_tab == tabs[1]:
 
         parser, nb_articles = find_list_articles(query)
 
-        placeholder.markdown(f"{nb_articles} articles trouvés !")
+        placeholder.markdown(f"{nb_articles} articles trouvés")
 
         placeholder2 = st.empty()
         placeholder2.markdown('Analyse des articles en cours...')
         placeholder3 = st.empty()
         placeholder4 = st.empty()
         L = []
-        print(len(parser))
+
+        max_nb_article = 10
+
+        nb_articles = min(nb_articles,max_nb_article)
+
         for k in range(nb_articles):
             placeholder3.progress(k/nb_articles)
             extracted_article = extract_one_article_from_parser(parser,k)
             if extracted_article:
                 L.append(extracted_article)
             placeholder4.markdown(f"{k} articles sur {nb_articles} extraits")
-        placeholder3.progress(100)
+        placeholder4.empty()
+        placeholder3.empty()
         placeholder2.markdown('Analyse terminée')
         
 
