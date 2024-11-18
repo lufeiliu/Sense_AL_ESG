@@ -25,8 +25,3 @@ def create_graph_from_name(Company_name):
     plt.grid(True)
     plt.tight_layout()
     plt.show()
-
-
-
-
-create_graph_from_name('Amazon')

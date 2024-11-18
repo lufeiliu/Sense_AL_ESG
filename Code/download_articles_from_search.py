@@ -3,6 +3,7 @@ from lxml.html import fromstring
 import json
 import base64
 import newspaper
+import time
 
 class clarticle:
     def __init__(self,title,url,date,author,text,ESGscore):
@@ -105,6 +106,9 @@ def extract_articles_from_parser(parser):
 
     return(L)
 
+def compute_esg_score(text):
+    return(1)
+
 def extract_one_article_from_parser(parser, k):
 
 
@@ -151,9 +155,22 @@ def extract_one_article_from_parser(parser, k):
             title = parser_title[0]
         else:
             title = 'No title'
+
+        esg_score = compute_esg_score(text)
         
-        return(clarticle(title,url,date,author,[],0))
+        return(clarticle(title,url,date,author,text,esg_score))
     return(False)
 
+def compute_score_from_list_of_article(L):
+    return(max([item.ESGscore for item in L]))
 
+def extract_text_from_url(url):
+    '''
+    From an url of a newspaper, download the text of the article
+    '''
     
+    test = newspaper.Article(url)
+    test.download()
+
+    test.parse()
+    return(test.text)
