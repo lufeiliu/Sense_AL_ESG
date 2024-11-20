@@ -55,55 +55,9 @@ def find_list_articles(query,language = 'en-US'):
 
 def extract_articles_from_parser(parser):
     L = []
-    articles = parser.xpath('//*[@id="yDmH0d"]/c-wiz/div/main/div[2]/c-wiz')[0]
-    
-    for k in range(len(articles)):
-        parser_author = parser.xpath(f'//*[@id="yDmH0d"]/c-wiz/div/main/div[2]/c-wiz/c-wiz[{k}]/c-wiz/article/div[2]/div/span')
-        parser_url = parser.xpath(f'//*[@id="yDmH0d"]/c-wiz/div/main/div[2]/c-wiz/c-wiz[{k}]/c-wiz/article/div[1]/div[1]/a/@jslog')
-        parser_date = parser.xpath(f'//*[@id="yDmH0d"]/c-wiz/div/main/div[2]/c-wiz/c-wiz[{k}]/c-wiz/article/div[2]/time/@datetime')
-        parser_title = parser.xpath(f'//*[@id="yDmH0d"]/c-wiz/div/main/div[2]/c-wiz/c-wiz{k}/c-wiz/article/div[1]/div[2]/div/a/text()')
-
-
-   
-        if len(parser_url)>0:
-            try:
-                url = convert_url(parser_url[0])
-            except:
-                continue
-            
-            try:
-                news = newspaper.Article(url)
-                news.download()
-                news.parse()
-            except:
-                continue
-
-            if news.text != '':
-                text = news.text
-            else:
-                continue
-
-            if news.publish_date != None:
-                date = news.publish_date
-            elif len(parser_date)>0:
-                date = format_date(parser_date[0])
-            else:
-                date = format_date(-1)
-
-            if len(news.authors)>0:
-                author = ', '.join(news.authors)
-            elif len(parser_author)>0:
-                author = format_author(parser_author[0].text)
-            else:
-                author = 'No author'
-
-            if len(parser_title)>0:
-                title = parser_title[0]
-            else:
-                title = 'No title'
-
-            L.append(clarticle(title,url,date,author,[]))
-
+    for k,article in enumerate(parser):
+        L.append(extract_one_article_from_parser(parser,k)
+                 
     return(L)
 
 def compute_esg_score(text):
