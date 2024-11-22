@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 from download_articles_from_search import find_list_articles, extract_one_article_from_parser, compute_score_from_list_of_article
+from create_graph_from_db import create_graph_from_name
 
 # from ../Backend/download_article_from_search import test
 
@@ -13,6 +14,10 @@ st.sidebar.subheader("Navigation")
 selected_tab = st.sidebar.radio(' ',tabs)
 
 if selected_tab == tabs[0]:
+    list_companies = ['Total','Crédit_agricole','Amazon','Shell']
+    company_to_display = st.selectbox("Select one company to monitor",list_companies)
+    fig = create_graph_from_name(company_to_display)
+    st.pyplot(fig)
     pass
 
 if selected_tab == tabs[1]:

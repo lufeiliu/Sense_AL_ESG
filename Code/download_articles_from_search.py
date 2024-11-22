@@ -56,7 +56,7 @@ def find_list_articles(query,language = 'en-US'):
 def extract_articles_from_parser(parser):
     L = []
     for k,article in enumerate(parser):
-        L.append(extract_one_article_from_parser(parser,k)
+        L.append(extract_one_article_from_parser(parser,k))
                  
     return(L)
 

@@ -16,12 +16,16 @@ def create_graph_from_name(Company_name):
         dates.append(datetime.strptime(row[2], '%Y-%m-%d'))
         ratings.append(row[3])
 
+    fig, ax = plt.subplots(figsize=(10, 5))
     plt.figure(figsize=(10, 5))
-    plt.plot(dates, ratings, marker='o', linestyle='-', color='b')
-    plt.title(f'ESG rating of {Company_name}')
-    plt.xlabel('Date')
-    plt.ylabel('ESG score')
-    plt.xticks(rotation=45)
-    plt.grid(True)
+    ax.plot(dates, ratings, marker='o', linestyle='-', color='b')
+    ax.set_title(f'ESG rating of {Company_name}')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('ESG score')
+    ax.set_xticklabels(dates, rotation=45)
+    ax.grid(True)
     plt.tight_layout()
-    plt.show()
+
+    return(fig)
+
+create_graph_from_name("Shell")
