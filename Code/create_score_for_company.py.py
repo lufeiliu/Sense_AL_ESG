@@ -18,4 +18,4 @@ def add_score_to_database(company):
     print("error no article found")
     return(-1)
   else:
-    
+    add_row()
