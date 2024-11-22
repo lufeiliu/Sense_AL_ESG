@@ -1,6 +1,6 @@
 import streamlit as st
 import time
-from download_articles_from_search import find_list_articles, extract_one_article_from_parser
+from download_articles_from_search import find_list_articles, extract_one_article_from_parser, compute_score_from_list_of_article
 
 # from ../Backend/download_article_from_search import test
 
@@ -37,7 +37,6 @@ if selected_tab == tabs[1]:
     a = c2.button("Lancer la recherche")
 
     if a:
-        st.text(ss['esg_company'])
         placeholder = st.empty()
         placeholder.markdown('Fonction recherche lancée')
 
@@ -69,7 +68,9 @@ if selected_tab == tabs[1]:
         placeholder4.empty()
         placeholder3.empty()
         placeholder2.markdown('Analyse terminée')
-        
+
+        score_of_this_search = compute_score_from_list_of_article(L)
+        st.text(f'Le score pour cette boite est : {score_of_this_search}')
 
 
 if selected_tab == tabs[2]:

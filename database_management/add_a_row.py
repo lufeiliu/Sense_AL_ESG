@@ -25,7 +25,7 @@ def add_row(database, row):
 def main():
     database = "database_ratings.db"
 
-    row = ('Amazon','2024-11-02',4.3,12)
+    row = ('Amazon','2024-11-16',6.2,12)
 
     add_row(database,row)
 
