@@ -1,0 +1,3 @@
+Modèle pour checker si ESG ou pas
+Modèle pour rater la négativité = sentiment analysis
+Calculer la portée du média (??)
