@@ -16,7 +16,6 @@ class Classifier:
         # Initialize tokenizer and model
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSequenceClassification.from_pretrained(model_name)
-        # Create a pipeline for text classification
         self.pipe_env = pipeline(
             "text-classification", 
             model=self.model, 
