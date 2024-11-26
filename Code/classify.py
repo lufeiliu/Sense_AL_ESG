@@ -74,11 +74,10 @@ class Classifier:
 
 
 if __name__ == "__main__":
-    # Read the input text
     with open("../data/test_article.txt", "r", encoding="utf-8") as file:
         text = file.read()
 
-    model_name = "yiyanghkust/finbert-esg"  # Path to download model from HuggingFace
+    model_name = "yiyanghkust/finbert-esg"
 
     # Initialize the Classifier
     classifier = Classifier(model_name)
